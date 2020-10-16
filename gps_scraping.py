@@ -21,9 +21,9 @@ for i in range(1,101):
 
 for i in range(1,101):
     gps=browser.find_elements_by_css_selector(f'#VisitRecordList > ul > li:nth-child({i}) > div > div.text > a')
-    mt=browser.find_elements_by_css_selector(f'#VisitRecordList > ul > li:nth-child({i}) > div > div.text > span:nth-child(1)')
+    
     for j in gps:
-        gps_data.append(j.text)
+        gps_data.append(j.text.split(','))
 
 key=['NAME', 'GPS']
 for value in zip(mt_data, gps_data):
