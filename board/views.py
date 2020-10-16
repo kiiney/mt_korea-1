@@ -13,7 +13,6 @@ def boardlist(request):
     popText = folium.Html('<b>Jirisan</b></br>'+str(lat_long), script=True)
     popup = folium.Popup(popText, max_width=2650)
     folium.RegularPolygonMarker(location=lat_long, popup=popup).add_to(m)
-    m = m._repr_html_() # updated
+    m = m._repr_html_() #  updated
     datas = {'mountain_map': m}
-    #return render(request, 'maps/showmapwithfolium.html', context=datas)
-    return HttpResponse("List 페이지 입니다")
+    return render(request, 'maps/showmapwithfolium.html', context=datas)    
