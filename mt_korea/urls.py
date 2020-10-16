@@ -6,5 +6,5 @@ from board import views as boardview
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', boardview.index),
-    path('board/', include('board.urls'))
+    path('board/', include('board.urls')),
 ]
