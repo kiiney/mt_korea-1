@@ -1,6 +1,6 @@
 import requests
-
-url = 'http://apis.data.go.kr/1400000/service/cultureInfoService/mntInfoOpenAPI?serviceKey=cRhBhi3sxVClCIks%2FemvBBGZgcYv5HaKvFr26Ov5Q5nor0WtrgUNO9rwfYO6FkLUif9SefP0BK%2B18mBFvV8%2FCw%3D%3D&searchWrd=%EB%B6%81%ED%95%9C%EC%82%B0'
+name=str(input("산이름을 입력하세요 :"))
+url = f'http://apis.data.go.kr/1400000/service/cultureInfoService/mntInfoOpenAPI?serviceKey=cRhBhi3sxVClCIks%2FemvBBGZgcYv5HaKvFr26Ov5Q5nor0WtrgUNO9rwfYO6FkLUif9SefP0BK%2B18mBFvV8%2FCw%3D%3D&searchWrd={name}'
 
 response = requests.get(url)
 print(response.status_code)
@@ -17,5 +17,3 @@ for item in data:
     mntiadd = item.find('mntiadd')
     mntidetails = item.find('mntidetails')
     print(mntiname.get_text(), mntiadd.get_text(), mntiname.get_text())
-
-
