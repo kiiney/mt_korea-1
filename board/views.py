@@ -15,4 +15,4 @@ def boardlist(request):
     folium.RegularPolygonMarker(location=lat_long, popup=popup).add_to(m)
     m = m._repr_html_() #  updated
     datas = {'mountain_map': m}
-    return render(request, 'maps/showmapwithfolium.html', context=datas)    
+    return render(request, 'board/showmapwithfolium.html', context=datas)    
