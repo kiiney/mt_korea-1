@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 options = Options()
 options.headless = True
-browser = webdriver.Chrome(executable_path="/home/bjh/Documents/Develop/chromedriver", options=options)
+browser = webdriver.Chrome(executable_path="./chromedriver", options=options)
 browser.get("http://bac.blackyak.com/html/challenge/ChallengeVisitList.asp?CaProgram_key=114")
 
 mt_data=list()
