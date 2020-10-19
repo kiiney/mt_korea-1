@@ -1,28 +1,36 @@
 import csv
 from pymongo import MongoClient
 
-f = open("scrap_code/mt_list100.csv", "r", encoding="utf-8")
+f = open("scrap_code/mtdb.csv", "r", encoding="utf-8")
 readers = csv.reader(f)
 
 # for reader in readers:
 #     print(reader)
 
 with MongoClient("mongodb://127.0.0.1:27017/") as client:
-    mt_db = client["mt_db"]
-    if "mt_collection" not in mt_db.list_collection_names():
-        mt_db.create_collection('mt_collection')
+    mtdb = client["mt_db"]
+    if "mt_col" not in mtdb.list_collection_names():
+        mtdb.create_collection('mt_col')
 
-    number = ""
-    name = ""
-    height = ""
-    location = ""
+    NO = ""
+    NAME = ""
+    ADDRESS = ""
+    LAT = ""
+    LON = ""
+    HEIGHT = ""
+    AREA = ""
+    DETAIL = ""
     for reader in readers:
-        number = reader[0]
-        name = reader[1]
-        height = reader[2]
-        location = reader[3]
+        NO = reader[0]
+        NAME = reader[1]
+        ADDRESS = reader[2]
+        LAT = reader[3]
+        LON = reader[4]
+        HEIGHT = reader[5]
+        AREA = reader[6]
+        DETAIL = reader[7]
         
-        data = {'number': number, 'name': name, 'height': height, 'location': location}
-        mt_db.mt_collection.insert_one(data)
+        data = {'NO': NO, 'NAME': NAME, 'ADDRESS': ADDRESS, 'LAT': LAT, 'LON':LON, 'HEIGHT' : HEIGHT,'AREA':AREA, 'DETAIL':DETAIL}
+        mtdb.mt_col.insert_one(data)
 
 # 172.17.0.2
