@@ -4,7 +4,9 @@ import folium
 # Create your views here.
 
 def index(request):
-    return HttpResponse("/board/list 로 가세요:)")
+    #return HttpResponse("/board/list 로 가세요:)")
+    
+    return render(request, 'board/firstpage.html')   
 
 def boardlist(request):   
 
@@ -15,4 +17,4 @@ def boardlist(request):
     folium.RegularPolygonMarker(location=lat_long, popup=popup).add_to(m)
     m = m._repr_html_() #  updated
     datas = {'mountain_map': m}
-    return render(request, 'board/showmapwithfolium.html', context=datas)    
+    return render(request, 'board/showmapwithfolium.html')    
