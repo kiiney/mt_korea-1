@@ -21,7 +21,7 @@ def boardlist(request):
     datas = {'mountain_map': m}
     
     with MongoClient("mongodb://127.0.0.1:27017/") as client:
-        mt_list = list(client.mt_db.mt_collection.find({}))
+        mt_list = list(client.mt_db.mt_col.find({}))
         datas['mt_list'] = mt_list
 
     return render(request, 'board/mtlist_fromdb.html', context=datas)    
