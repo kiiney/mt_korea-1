@@ -6,7 +6,8 @@ from pymongo import MongoClient
 # Create your views here.
 
 def index(request):
-    return HttpResponse("/board/list 로 가세요:)")
+    #return HttpResponse("/board/list 로 가세요:)")
+    return render(request, 'board/firstpage.html')   
 
 def boardlist(request):   
     lat_long = [35.3369, 127.7306]
