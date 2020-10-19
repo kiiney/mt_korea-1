@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 options = Options()
 options.headless = True
-browser = webdriver.Chrome(executable_path="./chromedriver", options=options)
+browser = webdriver.Chrome(executable_path="/home/cloudera/Documents/Develop/chromedriver", options=options)
 browser.get("http://bac.blackyak.com/html/challenge/ChallengeVisitList.asp?CaProgram_key=114")
 
 mt_data=list()
@@ -25,9 +25,11 @@ for i in range(1,101):
     for j in gps:
         gps_data.append(j.text)
 
-key=['NAME', 'GPS']
-for value in zip(mt_data, gps_data):
-    data={}
-    for k,v in zip(key,value):
-        data[k]=v
-    print(data)
+#key=['NAME', 'GPS']
+for value in gps_data:
+    v=value
+    print(v)
+    # for k,v in zip(key,value):
+    #     data[k]=v
+    # print(data)
+
