@@ -7,7 +7,7 @@ readers = csv.reader(f)
 # for reader in readers:
 #     print(reader)
 
-with MongoClient("mongodb://localhost:27017/") as client:
+with MongoClient("mongodb://127.0.0.1:27017/") as client:
     mt_db = client["mt_db"]
     if "mt_collection" not in mt_db.list_collection_names():
         mt_db.create_collection('mt_collection')
