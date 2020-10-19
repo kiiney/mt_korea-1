@@ -1,6 +1,8 @@
 import requests
-name=str(input("산이름을 입력하세요 :"))
-url = f'http://apis.data.go.kr/1400000/service/cultureInfoService/mntInfoOpenAPI?serviceKey=cRhBhi3sxVClCIks%2FemvBBGZgcYv5HaKvFr26Ov5Q5nor0WtrgUNO9rwfYO6FkLUif9SefP0BK%2B18mBFvV8%2FCw%3D%3D&searchWrd={name}'
+
+service_key='cRhBhi3sxVClCIks%2FemvBBGZgcYv5HaKvFr26Ov5Q5nor0WtrgUNO9rwfYO6FkLUif9SefP0BK%2B18mBFvV8%2FCw%3D%3D'
+search_word='한라산'
+url = f'http://apis.data.go.kr/1400000/service/cultureInfoService/mntInfoOpenAPI?serviceKey={service_key}&searchWrd={search_word}'
 
 response = requests.get(url)
 print(response.status_code)
