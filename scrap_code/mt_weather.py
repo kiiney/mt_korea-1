@@ -30,16 +30,17 @@ from bs4 import BeautifulSoup
 import csv
 a=str(input("산이름을 입력하세요:"))
 #path='/home/cloudera/Documents/Develop/mt_korea/scarp_code/wpoint.scv'
-f = open('./scarp_code/wp.csv', 'r', encoding='utf-8')
+f = open('./scarp_code/testDB.csv', 'r', encoding='utf-8')
 reader = csv.reader(f)
 lines = list(reader)
 
 for i in lines:
-    if a == (i[1]):
-        ID =str(i[2])
-        va =str(i[0])
+    if a == (i[0]):
+        WETHER_ID =str(i[5])
+        va =str(i[4])
+        
         AREA=str([k for k, v in area.items() if v == va])[2:-2]                   
-        print(ID,AREA)
+        #print(WETHER_ID,AREA)
         break
   
 f.close()
@@ -50,8 +51,8 @@ KEY = 'Nwg3el60bnk6AH7n3Ynp83bkOwjxbrpva%2Fe8hEOvsFY%3D'
 now = datetime.datetime.now()
 DATE= now.strftime('%Y%m%d')
 
-API_HOST = f'http://know.nifos.go.kr/openapi/mtweather/mountListSearch.do?keyValue={KEY}&version=1.0&localArea={AREA}&obsid={ID}&tm={DATE}'
-print(API_HOST)
+API_HOST = f'http://know.nifos.go.kr/openapi/mtweather/mountListSearch.do?keyValue={KEY}&version=1.0&localArea={AREA}&obsid={WETHER_ID}&tm={DATE}'
+#print(API_HOST)
 req = urllib.request.Request(API_HOST)
 data = urllib.request.urlopen(req).read()
 soup = BeautifulSoup(data, features="xml")

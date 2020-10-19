@@ -6,7 +6,8 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 def index(request):
-    return HttpResponse("/board/list 로 가세요:)")
+    #return HttpResponse("/board/list 로 가세요:)")
+    return render(request, 'board/firstpage.html')   
 
 def boardlist(request):   
 

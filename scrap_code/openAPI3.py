@@ -16,4 +16,12 @@ for item in data:
     mntiname = item.find('mntiname')
     mntiadd = item.find('mntiadd')
     mntidetails = item.find('mntidetails')
-    print(mntiname.get_text(), mntiadd.get_text(), mntiname.get_text())
+    mntiadmin = item.find('mntiadmin')
+    mntiadminnum = item.find('mntiadminnum')
+    
+    print(mntiname.get_text())
+    print(mntiadd.get_text())
+    print(mntiadmin.get_text())
+    print(mntiadminnum.get_text())
+    print(mntidetails.get_text())
+  
