@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 import folium
 
@@ -24,4 +24,10 @@ def boardlist(request):
         mt_list = list(client.mt_db.mt_collection.find({}))
         datas['mt_list'] = mt_list
 
-    return render(request, 'board/mtlist_fromdb.html', context=datas)    
+    return render(request, 'board/mtlist_fromdb.html', context=datas) 
+
+def boardlistdetail(request, pk):
+    listdetail = get_object_or_404()
+    return HttpResponse("detail 페이지 입니다.")
+
+
