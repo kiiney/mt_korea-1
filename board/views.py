@@ -15,7 +15,6 @@ def index(request):
 def boardlist(request): 
     with MongoClient("mongodb://127.0.0.1:27017/") as client:
         mt_list = list(client.mt_db.mt_col.find({'NAME':"지리산"}))
-        
         no=mt_list[0]['NO']
         lat=mt_list[0]['LAT']
         lon=mt_list[0]['LON']

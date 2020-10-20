@@ -1,3 +1,5 @@
+{% load static %}
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 {% comment %} <div class="container">
@@ -13,10 +15,12 @@
     </div>
 </div>   {% endcomment %}
 
+
 <div class="container">
-    <div class="col">
-        <div class="row">
-            <h1>100대 명산</h1>
+    <div class="row">
+        <div class="col">
+            <h3 style="text-align : center">&#60;&#60; 한국의 100대 명산 &#62;&#62;</h3>
+            <p></p> 
             <table class="table table-striped">
                 <thead> <tr><th>순번</th> <th>산명</th> <th>높이</th> <th>소재지</th></tr> </thead>
                 <tbody>
@@ -40,8 +44,11 @@
                 {% endif %}
             </ul>
         </div>
-        <div class="row">
+        {% comment %} <div class="row">
             {{ mountain_map|safe }}
+        </div> {% endcomment %}
+        <div class="col">
+            <img src="{% static 'css/100mts.jpg' %}">
         </div>
     </div>
  </div>
