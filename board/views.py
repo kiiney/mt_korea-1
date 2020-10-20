@@ -24,4 +24,21 @@ def boardlist(request):
         mt_list = list(client.mt_db.mt_col.find({}))
         datas['mt_list'] = mt_list
 
-    return render(request, 'board/mtlist_fromdb.html', context=datas)    
+    return render(request, 'board/mtlist_fromdb.html', context=datas)   
+
+
+def boardview(request,NAME):
+    
+    datas={}
+    with MongoClient("mongodb://127.0.0.1:27017/") as client:
+        mt_list = list(client.mt_db.mt_col.find({'NAME':NAME}))
+        datas['mt_list'] = mt_list
+        
+    return render(request, 'board/boardview.html', context=datas)      
+    # datas=[]
+    # with MongoClient("mongodb://127.0.0.1:27017/") as client:
+    #     mt_list = list(client.mt_db.mt_col.find({'NAME':NAME}))
+    #     datas['mt_list'] = mt_list
+    #     print(datas)        
+    
+    #return render(request, 'board/boardview.html', context=datas)
