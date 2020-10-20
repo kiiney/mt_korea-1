@@ -33,7 +33,7 @@ def boardview(request,NAME):
     with MongoClient("mongodb://127.0.0.1:27017/") as client:
         mt_list = list(client.mt_db.mt_col.find({'NAME':NAME}))
         datas['mt_list'] = mt_list
-        
+    print(datas)
     return render(request, 'board/boardview.html', context=datas)      
     # datas=[]
     # with MongoClient("mongodb://127.0.0.1:27017/") as client:

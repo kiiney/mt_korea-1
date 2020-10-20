@@ -10,29 +10,42 @@
   		<col width="25%"/>
   		<col width="*"/>
   	</colgroup>
-    
+    <div class="row">
+        <div class="col">
+            {% for mt_li in mt_list %}
+        </div>
+        <div class="col">
     <tbody>
       <tr>
       	<td>산이름</td>
-        <td>{{mt_list.0.NAME}}</td>
+        <td>{{mt_li.NAME}}</td>
+     </tr>
+      <tr>
+      	<td>높이</td>
+        <td>{{mt_li.HEIGHT}}m</td>
      </tr>      
       <tr >
-        <td>위치</td>
-        <td>{{mt_list.0.AREA}}</td>
+        <td>주소</td>
+        <td>{{mt_li.ADDRESS}}</td>
      
+      </tr>
+      <tr >
+        <td>GPS</td>
+        <td>{{mt_li.LAT}},{{mt_li.LON}}</td>
       </tr>
       <tr >
         <td>상제정보</td>
-        <td>{{mt_list.0.DETAIL | linebreaksbr}} 
+        <td>{{mt_li.DETAIL | linebreaksbr}} 
         </td>
       
       </tr>
-     
+        <td>지역</td>
+        <td>{{mt_li.AREA}}</td>
        <tr >
         <td></td>
         <td></td>
       </tr>
-      
+            {% endfor %}
     </tbody>
   </table>
   
