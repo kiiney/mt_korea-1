@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col">
             {% for mt_li in mt_list %}
-                <ul><a href="detail/{{ mt_li.NAME }}">▲ {{ mt_li.NO }}{{ mt_li.NAME }} - {{ mt_li.ADDRESS }} </a></ul>
+                <ul><a href="detail/{{ mt_li.NAME }}">{{ mt_li.NO }}. {{ mt_li.NAME }} - {{ mt_li.ADDRESS }} </a></ul>
             {% endfor %}
         </div>
         <div class="col">
