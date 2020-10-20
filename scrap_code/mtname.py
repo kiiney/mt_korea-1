@@ -21,10 +21,10 @@ for num in range (1,101):
     #a.append(lon)
     #desc =cont.get("description")
     #a.append(desc)
-    f.write(str(num)+","+mtname+","+address+","+lat+","+lon+"\n")
+    weather2 = cont.get("forestAWS10Min")
+    
+    print (weather2)
+    
+    #f.write(str(num)+","+mtname+","+address+","+lat+","+lon+"\n")
 f.close()
-# f = open('mt_height.csv', 'r', encoding='utf-8')
 
-# df_INNER_JOIN = pd.merge(b, f, left_on='mtname', right_on='mtname', how='inner')
-# print(df_INNER_JOIN)
-# f.close()

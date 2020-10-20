@@ -46,9 +46,51 @@
         <td></td>
       </tr>
             {% endfor %}
+      
+            
+            {% for w in weather1 %}    
+            
+        
+      
+        <tr >
+          <td>온도</td>
+            <td>{{w.senseTemp}}도</td>
+        </tr>
+        <tr >
+          <td>일출시간</td>
+            <td>{{w.sunriseTime}}</td>
+        </tr>
+        <tr >
+          <td>일몰시간</td>
+            <td>{{w.sunsetTime}}</td>
+        </tr>
+    
+    
+    
+     {% endfor %}
+        {% for w in weather2 %}             
+            
+        <tr >
+          <td>풍속</td>
+            <td>{{w.ws2m}}m/s</td>
+        </tr>
+        <tr >
+          <td>강우량</td>
+            <td>{{w.rn}}mm</td>
+        </tr>
+        <tr >
+          <td>습도</td>
+            <td>{{w.hm2m}}%</td>
+        </tr>
+    
+    
+    
+     {% endfor %}
     </tbody>
   </table>
-  
+  <div class="col">
+            {{ mountain_map|safe }}
+        </div>
   	<div class="container" style="text-align:right">
 	  <div class="btn-group">
 	    
