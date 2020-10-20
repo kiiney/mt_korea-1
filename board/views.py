@@ -30,17 +30,17 @@ def boardlist(request):
 
     data = request.GET.copy()
     data1 = {'mountain_map': m}
-    
+
     with MongoClient("mongodb://127.0.0.1:27017/") as client:
         mt_list = list(client.mt_db.mt_col.find({}))
         # datas['mt_list'] = mt_list
-    data2 = {'mt_list' : mt_list}
+    # data2 = {'mt_list' : mt_list}
     paginator = Paginator(mt_list, 10)
     page_number = request.GET.get('page', 1)
     data3 = {'page_obj' : paginator.get_page(page_number)}
 
     # return render(request, 'board/mtlist_fromdb.html', context=datas)  
-    return render(request, 'board/mtlist_fromdb.html', {'mountain_map': m, 'mt_list' : mt_list, 'page_obj' : paginator.get_page(page_number)})  
+    return render(request, 'board/mtlist_fromdb.html', {'mountain_map': m, 'page_obj' : paginator.get_page(page_number)})  
 
 
 def boardview(request,NAME):
