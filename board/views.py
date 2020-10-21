@@ -15,22 +15,8 @@ def index(request):
     return render(request, 'board/firstpage.html')   
 
 def boardlist(request): 
-    with MongoClient("mongodb://127.0.0.1:27017/") as client:
-        mt_list = list(client.mt_db.mt_col.find({'NAME':"지리산"}))
-        no=mt_list[0]['NO']
-        lat=mt_list[0]['LAT']
-        lon=mt_list[0]['LON']
-        
-    lat_long = [lat, lon]  
-#    lat_long = [35.3369, 127.7306]
-    m = folium.Map(lat_long, zoom_start=10)
-    popText = folium.Html('<b>Jirisan</b></br>'+str(lat_long), script=True)
-    popup = folium.Popup(popText, max_width=2650)
-    folium.RegularPolygonMarker(location=lat_long, popup=popup).add_to(m)
-    m = m._repr_html_() #  updated
-
+   
     data = request.GET.copy()
-    data1 = {'mountain_map': m}
 
     with MongoClient("mongodb://127.0.0.1:27017/") as client:
         mt_list = list(client.mt_db.mt_col.find({}))
@@ -43,19 +29,56 @@ def boardlist(request):
     # return render(request, 'board/mtlist_fromdb.html', context=datas)  
     return render(request, 'board/mtlist_fromdb.html', {'mountain_map': m, 'page_obj' : paginator.get_page(page_number)})  
 
+
+def goodpricelist(request): 
+    datas={}  
+    with MongoClient("mongodb://127.0.0.1:27017/") as client:
+        gp_list = list(client.mt_db.goodp_col.find({}))
+        
+        datas['gp_list'] = gp_list
+
+
+    return render(request, 'board/goodprice.html', context=datas)
+
+def goodpriceview(request,ADDRESS): 
+    datas={}  
+    with MongoClient("mongodb://127.0.0.1:27017/") as client:
+        gp_list = list(client.mt_db.goodp_col.find({'ADDRESS':ADDRESS}))
+        datas['gp_list'] = gp_list
+        title =gp_list[0]['TITLE']
+        sector =gp_list[0]['SECTOR']
+        tel =gp_list[0]['TEL']
+        lat=gp_list[0]['X']
+        lon=gp_list[0]['Y']
+        print(lat,lon)
+        lat_long = [lat, lon]
+        m = folium.Map(lat_long, zoom_start=10)
+        popText = folium.Html(f'<b>{title}({sector})</b></br>'+f'<b>{tel}</b></br>', script=True)
+        popup = folium.Popup(popText, max_width=2650)
+        folium.RegularPolygonMarker(location=lat_long, popup=popup).add_to(m)
+        m = m._repr_html_()
+        # folium 한글 깨짐 현상 발생시 아래 패키지 설치
+        # pip install git+https://github.com/python-visualization/branca.git@master
+        datas['mountain_map'] = m
+        
+    return render(request, 'board/goodpriceview.html', context=datas)        
+
 def boardview(request,NAME):
     
     datas={}
     with MongoClient("mongodb://127.0.0.1:27017/") as client:
         mt_list = list(client.mt_db.mt_col.find({'NAME':NAME}))
         
+        name=mt_list[0]['NAME']
+        height=mt_list[0]['HEIGHT']
+        area=mt_list[0]['AREA']
         no=mt_list[0]['NO']
         lat=mt_list[0]['LAT']
         lon=mt_list[0]['LON']
         print(lat,lon)
         lat_long = [lat, lon]
         m = folium.Map(lat_long, zoom_start=10)
-        popText = folium.Html('<b>Jirisan</b></br>'+str(lat_long), script=True)
+        popText = folium.Html(f'<b>{name}&nbsp;({height}m)</b></br>'+f'<b>{area}</b></br>', script=True)
         popup = folium.Popup(popText, max_width=2650)
         folium.RegularPolygonMarker(location=lat_long, popup=popup).add_to(m)
         m = m._repr_html_() #  updated
@@ -91,6 +114,7 @@ def goodpricelist(request):
 
     # return render(request, 'board/mtlist_fromdb.html', context=datas)  
     return render(request, 'board/goodprice.html', {'page_obj' : paginator.get_page(page_number)})
+
 
 def goodpriceview(request,ADDRESS): 
     datas={}  
