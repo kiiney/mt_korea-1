@@ -69,39 +69,31 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
             {% for mt_li in mt_list %}
         </div>
     <tbody>
-      <tr>
+      <tr> {% comment %} 산이름 {% endcomment %}
       	<td >산이름</td>
-        <td>{{mt_li.NAME}}</td>
+        <td>{{mt_li.NAME}}</td> 
      </tr>
-      <tr>
+      <tr> {% comment %} 높이 {% endcomment %}
       	<td>높이</td>
         <td>{{mt_li.HEIGHT}}m</td>
      </tr>      
-      <tr >
+      <tr > {% comment %} 주소 {% endcomment %}
         <td>주소</td>
         <td>{{mt_li.ADDRESS}}</td>
-     
       </tr>
       <tr >
         <td>GPS</td>
         <td>{{mt_li.LAT}},{{mt_li.LON}}</td>
       </tr>
-      <tr >
-        <td>상제정보</td>
+      <tr > 
+        <td>상세정보</td>
         <td>{{mt_li.DETAIL | linebreaksbr}} 
         </td>
-      
       </tr>
         <td>지역</td>
         <td>{{mt_li.AREA}}</td>
-       
-            {% endfor %}
-      
-            
+            {% endfor %} 
             {% for w in weather1 %}    
-            
-        
-      
         <tr >
           <td>온도</td>
             <td>{{w.senseTemp}}도</td>
@@ -114,12 +106,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <td>일몰시간</td>
             <td>{{w.sunsetTime}}</td>
         </tr>
-    
-    
-    
      {% endfor %}
-        {% for w in weather2 %}             
-            
+        {% for w in weather2 %}               
         <tr >
           <td>풍속</td>
             <td>{{w.ws2m}}m/s</td>
@@ -132,12 +120,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
           <td>습도</td>
             <td>{{w.hm2m}}%</td>
         </tr>
-    
-    
-    
      {% endfor %}
     </tbody>
-
   </table>
   </p>
   </p>

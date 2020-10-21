@@ -103,14 +103,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
             <p></p> 
             <table class="table table-striped">
                 <thead> <tr><th>순번</th> <th>산명</th> <th>높이</th> <th>소재지</th></tr> </thead>
-                <tbody>
-                    {% for row in page_obj %}
-                        <tr onclick="location.href='http://127.0.0.1:8000/board/list/detail/{{row.NAME}}'" style="cursor:hand" ><td>{{row.NO}}</td>
-                        <td>{{row.NAME}}</td><td>{{row.HEIGHT}} m</td><td>{{row.ADDRESS}}</td></tr>
+                <tbody>                                   {% comment %} 테이블 head 로 필드명 지정 {% endcomment %}
+                    {% for row in page_obj %}             {% comment %} 테이블 body 로 데이터 넣기 {% endcomment %}
+                        <tr onclick="location.href='http://127.0.0.1:8000/board/list/detail/{{row.NAME}}'" style="cursor:hand" >
+                        <td>{{row.NO}}</td><td>{{row.NAME}}</td><td>{{row.HEIGHT}} m</td><td>{{row.ADDRESS}}</td></tr>
                     {% endfor %}
                 </tbody>
             </table>
-            <ul class="pagination">
+            <ul class="pagination">                       {% comment %} 페이지네이션 {% endcomment %}
                 {% if page_obj.has_previous %}
                 <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
                 <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
@@ -124,11 +124,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
                 {% endif %}
             </ul>
         </div>
-        {% comment %} <div class="row">
-            {{ mountain_map|safe }}
-        </div> {% endcomment %}
         <div class="col">
-            <img src="{% static 'css/100mts.jpg' %}">
+            <img src="{% static 'css/100mts.jpg' %}">     {% comment %} 100대 명산 이미지 넣기 {% endcomment %}
         </div>
     </div>
  </div>
