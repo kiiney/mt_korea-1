@@ -43,7 +43,7 @@ def goodpriceview(request,ADDRESS):
         lat_long = [lat, lon]
         m = folium.Map(lat_long, zoom_start=10)
         popText = folium.Html(f'<b>{title}({sector})</b></br>'+f'<b>{tel}</b></br>', script=True)
-        popup = folium.Popup(popText, max_width=2650)
+        popup = folium.Popup(popText, max_width=2650, show=True)
         folium.RegularPolygonMarker(location=lat_long, popup=popup).add_to(m)
         m = m._repr_html_()
         # folium 한글 깨짐 현상 발생시 아래 패키지 설치
@@ -68,7 +68,7 @@ def boardview(request,NAME):
         lat_long = [lat, lon]
         m = folium.Map(lat_long, zoom_start=10)
         popText = folium.Html(f'<b>{name}&nbsp;({height}m)</b></br>'+f'<b>{area}</b></br>', script=True)
-        popup = folium.Popup(popText, max_width=2650)
+        popup = folium.Popup(popText, max_width=2650, show=True)
         folium.RegularPolygonMarker(location=lat_long, popup=popup).add_to(m)
         m = m._repr_html_() #  updated
 

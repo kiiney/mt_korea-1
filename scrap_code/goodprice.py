@@ -9,7 +9,7 @@ def getLatLng(ADDRESS):
     url = 'https://dapi.kakao.com/v2/local/search/address.json?query='+ADDRESS
     header = {"Authorization": "KakaoAK ee0cf33fb761c2003bf8840f07f8accc"}
     result = json.loads(str(requests.get(url,headers=header).text))   
-    print(result)
+    # print(result)
     if result['meta']['total_count'] != 0:
         X = result['documents'][0]['x']
         Y = result['documents'][0]['y']        
