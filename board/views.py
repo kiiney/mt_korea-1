@@ -27,7 +27,7 @@ def boardlist(request):
     data3 = {'page_obj' : paginator.get_page(page_number)}
 
     # return render(request, 'board/mtlist_fromdb.html', context=datas)  
-    return render(request, 'board/mtlist_fromdb.html', {'mountain_map': m, 'page_obj' : paginator.get_page(page_number)})  
+    return render(request, 'board/mtlist_fromdb.html', {'page_obj' : paginator.get_page(page_number)})  
 
 
 def goodpricelist(request): 
