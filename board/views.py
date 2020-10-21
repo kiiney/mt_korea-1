@@ -39,6 +39,16 @@ def boardlist(request):
     return render(request, 'board/mtlist_fromdb.html', context=datas)   
 
 
+def goodpricelist(request): 
+    datas={}  
+    with MongoClient("mongodb://127.0.0.1:27017/") as client:
+        gp_list = list(client.mt_db.goodp_col.find({}))
+        
+        datas['gp_list'] = gp_list
+
+
+    return render(request, 'board/goodprice.html', context=datas)  
+
 def boardview(request,NAME):
     
     datas={}
