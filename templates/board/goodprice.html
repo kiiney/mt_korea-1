@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+{% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <div class="container">
     <h1>행정안전부 착한가격</h1>
@@ -11,3 +11,45 @@
         
     </div>
 </div>
+ {% endcomment %}
+
+{% load static %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p></p> 
+            <h3 style="text-align : center">&#60;&#60; 착한 맛집 &#62;&#62;</h3>
+            <p></p> 
+            <p></p> 
+            <table class="table table-striped">
+                <thead> <tr> <th>이름</th> <th>업종</th> <th>연락처</th> <th>주소</th></tr> </thead>
+                <tbody>                              
+                    {% for row in page_obj %}
+                        <tr onclick="location.href='http://127.0.0.1:8000/board/goodpricelist/detail/{{row.ADDRESS}}'" style="cursor:hand" >
+                        <td>{{row.TITLE}}</td><td>{{row.SECTOR}}</td><td>{{row.TEL}}</td><td>{{row.ADDRESS}}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                {% endif %}
+                <li class="page-item active"><a class="page-link" href="#">Page {{ page_obj.number }} of
+                        {{ page_obj.paginator.num_pages }}</a></li>
+                {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        {% comment %} <div class="col">
+            <img src="{% static 'css/100mts.jpg' %}">
+        </div> {% endcomment %}
+    </div>
+ </div>

@@ -19,7 +19,7 @@ def getLatLng(ADDRESS):
     return Y,X
 
 header = {'User-Agent' : 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36'}
-n=3014
+n=1
 while n<12500:
     url = f"https://www.goodprice.go.kr/search/storeview.do?bestStoreSeq={n}"
     res = requests.get(url, headers=header)
