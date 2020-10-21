@@ -41,25 +41,6 @@ def boardlist(request):
     # return render(request, 'board/mtlist_fromdb.html', context=datas)  
     return render(request, 'board/mtlist_fromdb.html', {'mountain_map': m, 'page_obj' : paginator.get_page(page_number)})  
 
-
-def goodpricelist(request): 
-    datas={}  
-    with MongoClient("mongodb://127.0.0.1:27017/") as client:
-        gp_list = list(client.mt_db.goodp_col.find({}))
-        
-        datas['gp_list'] = gp_list
-
-
-    return render(request, 'board/goodprice.html', context=datas)
-
-def goodpriceview(request,ADDRESS): 
-    datas={}  
-    with MongoClient("mongodb://127.0.0.1:27017/") as client:
-        gp_list = list(client.mt_db.goodp_col.find({'ADDRESS':ADDRESS}))
-        datas['gp_list'] = gp_list
-
-    return render(request, 'board/goodpriceview.html', context=datas)        
-
 def boardview(request,NAME):
     
     datas={}
@@ -93,5 +74,29 @@ def boardview(request,NAME):
         datas['mountain_map'] = m
         
     
-    return render(request, 'board/boardview.html', context=datas)      
+    return render(request, 'board/boardview.html', context=datas)   
+
+
+def goodpricelist(request): 
+       
+    data = request.GET.copy()
+
+    with MongoClient("mongodb://127.0.0.1:27017/") as client:
+        goop_list = list(client.mt_db.goodp_col.find({}))
+    paginator = Paginator(goop_list, 10)
+    page_number = request.GET.get('page', 1)
+    data1 = {'page_obj' : paginator.get_page(page_number)}
+
+    # return render(request, 'board/mtlist_fromdb.html', context=datas)  
+    return render(request, 'board/goodprice.html', {'page_obj' : paginator.get_page(page_number)})
+
+def goodpriceview(request,ADDRESS): 
+    datas={}  
+    with MongoClient("mongodb://127.0.0.1:27017/") as client:
+        gp_list = list(client.mt_db.goodp_col.find({'ADDRESS':ADDRESS}))
+        datas['gp_list'] = gp_list
+
+    return render(request, 'board/goodpriceview.html', context=datas)        
+
+   
     
