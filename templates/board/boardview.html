@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container" style="margin-top:20px">
+  <h2>게시판 상세보기</h2>
+  <form name="form">
+  <table class="table">
+  	<colgroup>
+  		<col width="25%"/>
+  		<col width="*"/>
+  	</colgroup>
+    <div class="row">
+        <div class="col">
+            {% for mt_li in mt_list %}
+        </div>
+        <div class="col">
+    <tbody>
+      <tr>
+      	<td>산이름</td>
+        <td>{{mt_li.NAME}}</td>
+     </tr>
+      <tr>
+      	<td>높이</td>
+        <td>{{mt_li.HEIGHT}}m</td>
+     </tr>      
+      <tr >
+        <td>주소</td>
+        <td>{{mt_li.ADDRESS}}</td>
+     
+      </tr>
+      <tr >
+        <td>GPS</td>
+        <td>{{mt_li.LAT}},{{mt_li.LON}}</td>
+      </tr>
+      <tr >
+        <td>상제정보</td>
+        <td>{{mt_li.DETAIL | linebreaksbr}} 
+        </td>
+      
+      </tr>
+        <td>지역</td>
+        <td>{{mt_li.AREA}}</td>
+       <tr >
+        <td></td>
+        <td></td>
+      </tr>
+            {% endfor %}
+      
+            
+            {% for w in weather1 %}    
+            
+        
+      
+        <tr >
+          <td>온도</td>
+            <td>{{w.senseTemp}}도</td>
+        </tr>
+        <tr >
+          <td>일출시간</td>
+            <td>{{w.sunriseTime}}</td>
+        </tr>
+        <tr >
+          <td>일몰시간</td>
+            <td>{{w.sunsetTime}}</td>
+        </tr>
+    
+    
+    
+     {% endfor %}
+        {% for w in weather2 %}             
+            
+        <tr >
+          <td>풍속</td>
+            <td>{{w.ws2m}}m/s</td>
+        </tr>
+        <tr >
+          <td>강우량</td>
+            <td>{{w.rn}}mm</td>
+        </tr>
+        <tr >
+          <td>습도</td>
+            <td>{{w.hm2m}}%</td>
+        </tr>
+    
+    
+    
+     {% endfor %}
+    </tbody>
+  </table>
+  <div class="col">
+            {{ mountain_map|safe }}
+        </div>
+  	<div class="container" style="text-align:right">
+	  <div class="btn-group">
+	    
+	    <button type="button" class="btn btn-primary" onclick="goModify()">수정</button>&nbsp;&nbsp;
+	    <button type="button" class="btn btn-danger"  onclick="goDelete()">삭제</button>&nbsp;&nbsp;
+		  <button type="button" class="btn btn-primary" onclick="goList()">목록</button>
+	  </div>
+	</div>
+</form>	
+</div>
+
+<script>
+function goModify(){
+  //document-html 문서를 말하고 document에 name속성이 form인 객체를 가져와라 
+  frm = document.form; 
+  frm.action="/board/modify/{{board.id}}";
+  frm.method="get";
+  frm.submit();
+}
+
+function goList(){
+  location.href="/board/list"; //get방식으로 페이지 넘길때
+
+  /*
+  frm = document.form; 
+  frm.action="/board/list/";
+  frm.method="get";
+  frm.submit();
+  */
+}
+
+function goDelete()
+{
+  frm = document.form; 
+  frm.action="/board/delete/{{board.id}}";
+  frm.method="get";
+  frm.submit();
+}
+
+</script>
+
+{% endblock %}

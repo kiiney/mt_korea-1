@@ -8,5 +8,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', boardview.index),
     path('board/', include('board.urls')),
-    path('board/list/detail',detailview.detail,name='detail')
+    
 ]
