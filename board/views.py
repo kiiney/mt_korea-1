@@ -50,7 +50,15 @@ def goodpricelist(request):
         datas['gp_list'] = gp_list
 
 
-    return render(request, 'board/goodprice.html', context=datas)  
+    return render(request, 'board/goodprice.html', context=datas)
+
+def goodpriceview(request,ADDRESS): 
+    datas={}  
+    with MongoClient("mongodb://127.0.0.1:27017/") as client:
+        gp_list = list(client.mt_db.goodp_col.find({'ADDRESS':ADDRESS}))
+        datas['gp_list'] = gp_list
+
+    return render(request, 'board/goodpriceview.html', context=datas)        
 
 def boardview(request,NAME):
     
