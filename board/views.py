@@ -13,22 +13,8 @@ def index(request):
     return render(request, 'board/firstpage.html')   
 
 def boardlist(request): 
-    with MongoClient("mongodb://127.0.0.1:27017/") as client:
-        mt_list = list(client.mt_db.mt_col.find({'NAME':"지리산"}))
-        no=mt_list[0]['NO']
-        lat=mt_list[0]['LAT']
-        lon=mt_list[0]['LON']
-        
-    lat_long = [lat, lon]  
-#    lat_long = [35.3369, 127.7306]
-    m = folium.Map(lat_long, zoom_start=10)
-    popText = folium.Html('<b>Jirisan</b></br>'+str(lat_long), script=True)
-    popup = folium.Popup(popText, max_width=2650)
-    folium.RegularPolygonMarker(location=lat_long, popup=popup).add_to(m)
-    m = m._repr_html_() #  updated
-
+   
     data = request.GET.copy()
-    data1 = {'mountain_map': m}
 
     with MongoClient("mongodb://127.0.0.1:27017/") as client:
         mt_list = list(client.mt_db.mt_col.find({}))
@@ -111,5 +97,30 @@ def boardview(request,NAME):
         datas['mountain_map'] = m
         
     
-    return render(request, 'board/boardview.html', context=datas)      
+    return render(request, 'board/boardview.html', context=datas)   
+
+
+def goodpricelist(request): 
+       
+    data = request.GET.copy()
+
+    with MongoClient("mongodb://127.0.0.1:27017/") as client:
+        goop_list = list(client.mt_db.goodp_col.find({}))
+    paginator = Paginator(goop_list, 10)
+    page_number = request.GET.get('page', 1)
+    data1 = {'page_obj' : paginator.get_page(page_number)}
+
+    # return render(request, 'board/mtlist_fromdb.html', context=datas)  
+    return render(request, 'board/goodprice.html', {'page_obj' : paginator.get_page(page_number)})
+
+
+def goodpriceview(request,ADDRESS): 
+    datas={}  
+    with MongoClient("mongodb://127.0.0.1:27017/") as client:
+        gp_list = list(client.mt_db.goodp_col.find({'ADDRESS':ADDRESS}))
+        datas['gp_list'] = gp_list
+
+    return render(request, 'board/goodpriceview.html', context=datas)        
+
+   
     
