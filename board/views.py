@@ -5,6 +5,8 @@ from django.core.paginator import Paginator
 import requests
 import json
 
+from django.core.paginator import Paginator
+
 from pymongo import MongoClient
 # Create your views here.
 
