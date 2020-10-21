@@ -1,5 +1,28 @@
 {% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+    <div class="container">
+    <h1>행정안전부 착한가격</h1>
+    <div class="row">
+        <div class="col">
+            {% for gp in gp_list %}
+                <ul><a href="goodpricelist/detail/{{ gp.ADDRESS }}">. {{ gp.TITLE }} - {{ gp.ADDRESS }} -{{ gp.SECTOR }}</a></ul>
+            {% endfor %}
+        </div>
+        
+    </div>
+</div>
+ {% endcomment %}
+
+{% load static %}
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -32,7 +55,7 @@
         </div>
         <div class="w3-bar-block">
           <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
-          <a href="/board/" class="w3-bar-item w3-button w3-padding "><i class="fa fa-diamond fa-fw"></i> Home</a>
+          <a href="/board/" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-diamond fa-fw"></i> Home</a>
           <a href="/board/list/" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i> 100대 명산 </a>
           <a href="/board/goodpricelist" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i> 착한 맛집</a>
           
@@ -70,25 +93,6 @@
               overlayBg.style.display = "none";
             }
             </script>
-
-    <div class="container">
-    <h1>행정안전부 착한가격</h1>
-    <div class="row">
-        <div class="col">
-            {% for gp in gp_list %}
-                <ul><a href="goodpricelist/detail/{{ gp.ADDRESS }}">. {{ gp.TITLE }} - {{ gp.ADDRESS }} -{{ gp.SECTOR }}</a></ul>
-            {% endfor %}
-        </div>
-        
-    </div>
-</div>
- {% endcomment %}
-
-{% load static %}
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
 <div class="container">
     <div class="row">
         <div class="col">
@@ -122,5 +126,7 @@
         {% comment %} <div class="col">
             <img src="{% static 'css/100mts.jpg' %}">
         </div> {% endcomment %}
+
+        
     </div>
  </div>
