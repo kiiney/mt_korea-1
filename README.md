@@ -5,4 +5,4 @@ https://docs.google.com/spreadsheets/d/1ufcx6CZtBUXAGQHTLm-GPN0Hm2bhPRN5ge0hsLyg
 아래와 같이 웹페이지를 구현했습니다.
 다음의 동영상으로 실행 결과를 볼 수 있습니다.
 
-[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/T-D1KVIuvjA)
+
