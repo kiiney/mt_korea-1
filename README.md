@@ -7,7 +7,7 @@ https://docs.google.com/spreadsheets/d/1ufcx6CZtBUXAGQHTLm-GPN0Hm2bhPRN5ge0hsLyg
 
 - - -
 ##WBS
-<img src="https://github.com/hocolally/mt_korea/img/wbs.png">  
+<img src="https://github.com/hocolally/mt_korea/blob/master/img/wbs.png">  
 
 
 
