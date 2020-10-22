@@ -1,5 +1,5 @@
 # mt_korea
-<img src="https://github.com/hocolally/mt_korea/blob/master/img/100_mt_1.jpeg" width="450px" height="500px">   
+<img src="https://github.com/hocolally/mt_korea/blob/master/img/100_mt_1.jpeg" width="350px" height="400px">   
 
 - - -
 
