@@ -7,7 +7,8 @@ readers = csv.reader(f)
 # for reader in readers:
 #     print(reader)
 
-with MongoClient("mongodb://127.0.0.1:27017/") as client:
+# with MongoClient("mongodb://127.0.0.1:27017/") as client: #개인 피씨
+with MongoClient("mongodb://192.168.0.171:8087/") as client: # 공용 서버
     mtdb = client["mt_db"]
     if "mt_col" not in mtdb.list_collection_names():
         mtdb.create_collection('mt_col')

@@ -40,7 +40,8 @@ while n<12500:
         DELIV = info[-2].text
         PARK = info[-1].text
         X,Y=getLatLng(ADDRESS)
-        with MongoClient("mongodb://127.0.0.1:27017/") as client:
+        # with MongoClient("mongodb://127.0.0.1:27017/") as client: #개인 피씨
+        with MongoClient("mongodb://192.168.0.171:8087/") as client: # 공용 서버
             mtdb = client["mt_db"]
             if "goodp_col" not in mtdb.list_collection_names():
                 mtdb.create_collection("goodp_col")
