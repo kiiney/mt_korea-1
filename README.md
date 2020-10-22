@@ -6,6 +6,11 @@
 https://docs.google.com/spreadsheets/d/1ufcx6CZtBUXAGQHTLm-GPN0Hm2bhPRN5ge0hsLygluM/edit?usp=sharing   
 
 - - -
+##WBS
+<img src="https://github.com/hocolally/mt_korea/img/wbs.png">  
+
+
+
 ### 결과   
 
 아래와 같이 웹페이지를 구현했습니다.   
@@ -15,4 +20,5 @@ https://docs.google.com/spreadsheets/d/1ufcx6CZtBUXAGQHTLm-GPN0Hm2bhPRN5ge0hsLyg
 
 [![Video Label](http://img.youtube.com/vi/m2lfjnXsu8g/0.jpg)](https://www.youtube.com/watch?v=m2lfjnXsu8g)
 
-<img src="https://github.com/hocolally/mt_korea/wbs.png">   
+
+ 
