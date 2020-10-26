@@ -18,7 +18,7 @@ def boardlist(request):
    
     data = request.GET.copy()                                          # 빈 Query Dict 생성
 
-    with MongoClient("mongodb://127.0.0.1:27017/") as client:          # MondoDB 연결
+    with MongoClient("mongodb://192.168.0.109:27017/") as client:          # MondoDB 연결
         mt_list = list(client.mt_db.mt_col.find({}))                   # DB 추출
     paginator = Paginator(mt_list, 10)                                 # 페이지네이션 
     page_number = request.GET.get('page', 1)                           # 페이지네이션
@@ -28,7 +28,7 @@ def boardlist(request):
 
 def goodpriceview(request,ADDRESS): 
     datas={}  
-    with MongoClient("mongodb://127.0.0.1:27017/") as client:
+    with MongoClient("mongodb://192.168.0.109:27017/") as client:
         gp_list = list(client.mt_db.goodp_col.find({'ADDRESS':ADDRESS}))
         datas['gp_list'] = gp_list
         title =gp_list[0]['TITLE']
@@ -51,7 +51,7 @@ def goodpriceview(request,ADDRESS):
 
 def boardview(request,NAME):
     datas={}
-    with MongoClient("mongodb://127.0.0.1:27017/") as client:         # DB 연결해서 Data 받아올 준비
+    with MongoClient("mongodb://192.168.0.109:27017/") as client:         # DB 연결해서 Data 받아올 준비
         mt_list = list(client.mt_db.mt_col.find({'NAME':NAME}))       # 상세보기에 해당하는 특정 데이터 추출
         name=mt_list[0]['NAME']                                       # NAME 변수 설정 
         height=mt_list[0]['HEIGHT']                                   # HEIGHT 변수 설정 
@@ -85,7 +85,7 @@ def goodpricelist(request):
        
     data = request.GET.copy()
 
-    with MongoClient("mongodb://127.0.0.1:27017/") as client:
+    with MongoClient("mongodb://192.168.0.109:27017/") as client:
         goop_list = list(client.mt_db.goodp_col.find({}))
     paginator = Paginator(goop_list, 10)
     page_number = request.GET.get('page', 1)
